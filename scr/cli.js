@@ -21,6 +21,7 @@ const greetUser = () => {
   displayWelcomeMessage();
   const userName = getUserName();
   greetByUserName(userName);
+  return userName;
 };
 
 export default greetUser;

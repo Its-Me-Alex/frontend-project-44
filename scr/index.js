@@ -41,9 +41,9 @@ const askUserAnswer = () => {
   return userAnswer;
 };
 
-const gameLoop = (gameLogic, numberOfRounds) => {
-  for (let i = 0; i < numberOfRounds; i += 1) {
-    const correctAnswer = gameLogic();
+const gameLoop = (playGameRound, roundsCount) => {
+  for (let i = 0; i < roundsCount; i += 1) {
+    const correctAnswer = playGameRound();
     const userAnswer = askUserAnswer();
     if (isAnswerCorrect(correctAnswer, userAnswer)) {
       displayRightAnswerMessage();
@@ -60,8 +60,8 @@ const gameLoop = (gameLogic, numberOfRounds) => {
 const playGame = (gameData) => {
   const userName = greetUser();
   displayGameRules(gameData.rules);
-  const numberOfRounds = 3;
-  const gameResult = gameLoop(gameData.logic, numberOfRounds);
+  const roundsCount = 3;
+  const gameResult = gameLoop(gameData.playRound, roundsCount);
   displayEndMessage(gameResult, userName);
 };
 

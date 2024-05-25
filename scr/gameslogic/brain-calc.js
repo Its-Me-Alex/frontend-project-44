@@ -19,7 +19,7 @@ const generateGameQuestion = (problem) => {
   return question;
 };
 
-const sovleProblem = (problem) => {
+const solveProblem = (problem) => {
   const [number1, operator, number2] = problem;
   let solution = '';
   switch (operator) {
@@ -43,7 +43,7 @@ const playBrainCalcRound = () => {
   const problem = generateGameProblem();
   const question = generateGameQuestion(problem);
   displayQuestion(question);
-  const correctAnswer = sovleProblem(problem).toString();
+  const correctAnswer = solveProblem(problem).toString();
   return correctAnswer;
 };
 

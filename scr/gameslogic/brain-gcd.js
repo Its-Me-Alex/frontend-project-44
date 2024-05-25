@@ -29,7 +29,7 @@ const determineStartNumber = (number1, number2) => {
   return number2;
 };
 
-const sovleProblem = (problem) => {
+const solveProblem = (problem) => {
   const [number1, number2] = problem;
   let solution = 0;
   const startNumber = determineStartNumber(number1, number2);
@@ -48,7 +48,7 @@ const playBrainGcdRound = () => {
   const problem = generateGameProblem();
   const question = generateGameQuestion(problem);
   displayQuestion(question);
-  const correctAnswer = sovleProblem(problem).toString();
+  const correctAnswer = solveProblem(problem).toString();
   return correctAnswer;
 };
 

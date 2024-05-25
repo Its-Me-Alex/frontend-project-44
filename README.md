@@ -7,3 +7,6 @@
 ### Asciinema recordings
 Brain-Even:
 https://asciinema.org/a/660929
+
+Brain-Calc:
+https://asciinema.org/a/661081

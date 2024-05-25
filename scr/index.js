@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import greetUser from './cli.js';
 
-const getRandomInt = (maxNumber) => Math.floor(Math.random() * maxNumber);
+const getRandomInt = (maxNumber) => Math.floor(Math.random() * (maxNumber + 1));
 
 const displayGameRules = (text) => {
   console.log(text);

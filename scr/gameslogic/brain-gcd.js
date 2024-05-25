@@ -23,10 +23,7 @@ const isZero = (number) => {
 };
 
 const determineStartNumber = (number1, number2) => {
-  if (isZero(number1) || isZero(number2)) {
-    return 1;
-  }
-  if (number1 < number2) {
+  if (!isZero(number1) && number1 < number2) {
     return number1;
   }
   return number2;
@@ -38,7 +35,7 @@ const sovleProblem = (problem) => {
   const startNumber = determineStartNumber(number1, number2);
   let denominator = startNumber;
   for (let i = 0; i < startNumber; i += 1) {
-    if ((number1 % denominator === 0 && number2 % denominator === 0)) {
+    if (number1 % denominator === 0 && number2 % denominator === 0) {
       solution = denominator;
       return solution;
     }

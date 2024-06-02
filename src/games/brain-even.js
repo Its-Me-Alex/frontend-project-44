@@ -1,25 +1,17 @@
-import { playGame, displayQuestion, getRandomInt } from '../index.js';
+import getRandomInt from '../helper.js';
+import playGame from '../index.js';
 
-const generateGameQuestion = () => {
-  const maxNumber = 100;
-  const problem = getRandomInt(maxNumber);
-  return problem;
-};
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const isEven = (number) => number % 2 === 0;
 
-const playBrainEvenRound = () => {
-  const question = generateGameQuestion();
-  const number = question;
-  displayQuestion(question);
+const getQuestionAndAnswer = () => {
+  const maxNumber = 100;
+  const number = getRandomInt(maxNumber);
   const correctAnswer = isEven(number) ? 'yes' : 'no';
+  const question = number.toString();
 
-  return correctAnswer;
+  return [question, correctAnswer];
 };
 
-const gameData = {
-  rules: 'Answer "yes" if the number is even, otherwise answer "no".',
-  playRound: playBrainEvenRound,
-};
-
-export default () => playGame(gameData);
+export default () => playGame(description, getQuestionAndAnswer);

@@ -1,4 +1,7 @@
-import { playGame, displayQuestion, getRandomInt } from '../index.js';
+import getRandomInt from '../helper.js';
+import playGame from '../index.js';
+
+const description = 'What is the result of the expression?';
 
 const generateGameProblem = () => {
   const operators = ['+', '-', '*'];
@@ -9,6 +12,7 @@ const generateGameProblem = () => {
   const number1 = getRandomInt(maxNumber);
   const number2 = getRandomInt(maxNumber);
   problem.push(number1, operator, number2);
+
   return problem;
 };
 
@@ -36,20 +40,15 @@ const solveProblem = (problem) => {
       console.log('swtich statement error: operator is not operator or not allowed');
   }
 
-  return solution;
+  return solution.toString();
 };
 
-const playBrainCalcRound = () => {
+const getQuestionAndAnswer = () => {
   const problem = generateGameProblem();
   const question = generateGameQuestion(problem);
-  displayQuestion(question);
-  const correctAnswer = solveProblem(problem).toString();
-  return correctAnswer;
+  const correctAnswer = solveProblem(problem);
+
+  return [question, correctAnswer];
 };
 
-const gameData = {
-  rules: 'What is the result of the expression?',
-  playRound: playBrainCalcRound,
-};
-
-export default () => playGame(gameData);
+export default () => playGame(description, getQuestionAndAnswer);

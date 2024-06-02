@@ -1,4 +1,7 @@
-import { playGame, displayQuestion, getRandomInt } from '../index.js';
+import getRandomInt from '../helper.js';
+import playGame from '../index.js';
+
+const description = 'What number is missing in the progression?';
 
 const generateGameProblem = () => {
   const maxStartNumber = 100;
@@ -41,19 +44,15 @@ const getQuestionAnswerPair = (progressionArray) => {
   elements[pickRandomIndex] = emptyElement;
   const question = generateQuestionString(elements);
   output.push(question, solution);
+
   return output;
 };
 
-const playBrainProgressionRound = () => {
+const getQuestionAndAnswer = () => {
   const problem = generateGameProblem();
   const [question, correctAnswer] = getQuestionAnswerPair(problem);
-  displayQuestion(question);
-  return correctAnswer;
+
+  return [question, correctAnswer];
 };
 
-const gameData = {
-  rules: 'What number is missing in the progression?',
-  playRound: playBrainProgressionRound,
-};
-
-export default () => playGame(gameData);
+export default () => playGame(description, getQuestionAndAnswer);

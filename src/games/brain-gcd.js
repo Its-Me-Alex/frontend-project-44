@@ -1,4 +1,7 @@
-import { playGame, displayQuestion, getRandomInt } from '../index.js';
+import getRandomInt from '../helper.js';
+import playGame from '../index.js';
+
+const description = 'Find the greatest common divisor of given numbers.';
 
 const generateGameProblem = () => {
   const problem = [];
@@ -6,12 +9,14 @@ const generateGameProblem = () => {
   const number1 = getRandomInt(maxNumber);
   const number2 = getRandomInt(maxNumber);
   problem.push(number1, number2);
+
   return problem;
 };
 
 const generateGameQuestion = (problem) => {
   const [number1, number2] = problem;
   const question = `${number1} ${number2}`;
+
   return question;
 };
 
@@ -19,6 +24,7 @@ const isZero = (number) => {
   if (number === 0) {
     return true;
   }
+
   return false;
 };
 
@@ -26,6 +32,7 @@ const determineStartNumber = (number1, number2) => {
   if (!isZero(number1) && number1 < number2) {
     return number1;
   }
+
   return number2;
 };
 
@@ -34,27 +41,24 @@ const solveProblem = (problem) => {
   let solution = 0;
   const startNumber = determineStartNumber(number1, number2);
   let denominator = startNumber;
+
   for (let i = 0; i < startNumber; i += 1) {
     if (number1 % denominator === 0 && number2 % denominator === 0) {
       solution = denominator;
-      return solution;
+      return solution.toString();
     }
     denominator -= 1;
   }
-  return solution;
+
+  return solution.toString();
 };
 
-const playBrainGcdRound = () => {
+const getQuestionAndAnswer = () => {
   const problem = generateGameProblem();
   const question = generateGameQuestion(problem);
-  displayQuestion(question);
-  const correctAnswer = solveProblem(problem).toString();
-  return correctAnswer;
+  const correctAnswer = solveProblem(problem);
+
+  return [question, correctAnswer];
 };
 
-const gameData = {
-  rules: 'Find the greatest common divisor of given numbers.',
-  playRound: playBrainGcdRound,
-};
-
-export default () => playGame(gameData);
+export default () => playGame(description, getQuestionAndAnswer);
